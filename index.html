@@ -95,8 +95,8 @@
       </div>
       <div class="card" id="chainCard">
         <div class="big" id="chainBig">0</div>
-        <div class="label">Chain</div>
-        <div class="note">Add new chain</div>
+        <div class="label">Chipper blade sharpenings</div>
+        <div class="note">Add new sharpening</div>
       </div>
     </div>
     <div class="wrap">
@@ -163,7 +163,7 @@
 </div>
 
 <nav id="tabbar">
-  <button data-tab="home" class="active"><span class="ic">🪵</span>Home</button>
+  <button data-tab="home" class="active"><span class="ic">🪾</span>Home</button>
   <button data-tab="maintenance"><span class="ic">🛠️</span>Maintenance</button>
   <button data-tab="finance"><span class="ic">💵</span>Finance</button>
 </nav>
@@ -205,7 +205,7 @@ function render(){
   [...S.chains].reverse().forEach((c,ri)=>{
     const i=S.chains.length-1-ri;
     const d=document.createElement('div'); d.className='row';
-    d.innerHTML='<div><div class="main">Chain '+(i+1)+'</div><div class="meta">'+fmtDate(c.date)+' · at '+c.hoursAtChange+' hrs</div></div>';
+    d.innerHTML='<div><div class="main">Chipper blade sharpening '+(i+1)+'</div><div class="meta">Sharpened '+fmtDate(c.date)+' · at '+c.hoursAtChange+' hrs</div></div>';
     const b=document.createElement('button'); b.className='del'; b.textContent='✕';
     b.onclick=()=>{ S.chains.splice(i,1); save(); render(); };
     d.appendChild(b); ml.appendChild(d);
