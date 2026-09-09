@@ -182,11 +182,6 @@ const RAW_SEED=[
 let S={ hours:0, hoursEdited:'', chains:[], receipts:[], beforeAfter:'', accessories:'' };
 try { const x=JSON.parse(localStorage.getItem(KEY)); if(x) S=Object.assign(S,x); } catch(e){}
 if(!Array.isArray(S.rawDays)) S.rawDays=JSON.parse(JSON.stringify(RAW_SEED));
-if(S._mig517!==true){
-  const r=S.rawDays.find(d=>d.date==='5/17');
-  if(r && Number(r.hours)===0){ r.hours=1.5; }
-  S._mig517=true; save();
-}
 
 // --- cloud sync (Supabase, last-write-wins by server timestamp) ---
 const SB_URL='https://bcuahzcvfdhnftwmlvro.supabase.co';
@@ -221,6 +216,13 @@ function syncPush(){
    .catch(()=>{ _syncStamp('\u26a0\ufe0f Offline - saved on this device'); });
 }
 function syncQueue(){ S._dirty=true; clearTimeout(_syncTimer); _syncTimer=setTimeout(syncPush, 800); }
+
+if(S._mig517!==true){
+  const r=S.rawDays.find(d=>d.date==='5/17');
+  if(r && Number(r.hours)===0){ r.hours=1.5; }
+  S._mig517=true; save();
+}
+
 
 function save(){
   localStorage.setItem(KEY, JSON.stringify(S));
