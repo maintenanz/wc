@@ -108,6 +108,44 @@
         <div class="field"><textarea id="accessories" placeholder="Notes..."></textarea></div>
       </div>
 
+
+      <button class="caret-btn" id="faqCaret"><span>FAQ</span><span class="ch">›</span></button>
+      <div class="caret-body" id="faqBody">
+        <button class="faq-q"><span>What are the recommended service intervals?</span><span class="ch">›</span></button>
+        <div class="faq-a"><b>Before each use:</b>
+Clean debris off the engine and chipper, especially around the air shroud intake, air filter, and muffler. Check the oil level (at latest every 8 hours of running).
+<b>Every 5 hours + every spring & fall:</b>
+Check for loose hardware - pay special attention to the bolts on the chipper cone, hopper, axle, and front leg.
+<b>Every 25 hours:</b>
+Inspect/rotate the shredding hammers. Inspect/rotate the chipping knives. Open the air cleaner assembly and replace the filter element if debris has built up.
+<b>Every 100 hours:</b>
+Remove the engine air shroud and clean debris out of the cooling fins (the manual recommends an authorized repair center for this one). Check the spark plug - seasonally or every 100 hours.
+<b>Every spring & fall:</b>
+Check the safety labels are in place and readable. Inspect the chipper cone, shredder hopper, and discharge guards - replace anything damaged or missing.
+<b>Always:</b> more often in hot (over 85°F) or dusty conditions.</div>
+
+        <button class="faq-q"><span>How often does the oil need changing?</span><span class="ch">›</span></button>
+        <div class="faq-a"><b>Check:</b> before each use, or after every 8 hours of operation.
+<b>First change:</b> after the first 5-8 hours of operation (break-in). Change it while the engine is warm and refill with the grade recommended in the engine manual.
+<b>After that:</b> follow the engine manual's maintenance schedule.
+Used oil is hazardous - take it to a safe disposal/recycling center.</div>
+
+        <button class="faq-q"><span>What basic maintenance should I actually stay on top of?</span><span class="ch">›</span></button>
+        <div class="faq-a"><b>Before any service:</b> disconnect the spark plug wire and secure it away from the plug - amputation hazard if the rotor turns.
+<b>The cutting parts</b> are the whole game: the triangular shredding hammers rotate twice, then flip, for 6 sharp edges total; the J-hammers flip once. The chipping knives can be rotated or sharpened. Dull knives show up as excessive branch vibration while chipping.
+<b>The routine:</b> keep fluid levels checked, engine and parts clean, and nuts and bolts tight. Service the air cleaner. Spark plug replacement goes through an authorized repair center.
+Warm the engine up for several minutes before putting it to work.</div>
+
+        <button class="faq-q"><span>How do I winterize / store it?</span><span class="ch">›</span></button>
+        <div class="faq-a">Follow the engine manual's storage prep for both short and long term storage. The two big ones: drain the fuel system, or add fuel stabilizer to the fuel.
+Never store a fueled unit - or the fuel container - inside an enclosed structure, and never near an open flame or pilot light (a water heater is the classic example). Let the unit cool before storing.
+<b>Coming back in spring:</b> follow the engine manual's start-up procedures for returning the unit to service.</div>
+
+        <button class="faq-q"><span>Any starting tips?</span><span class="ch">›</span></button>
+        <div class="faq-a">Engine oil goes in before the first start - it ships without. Add fuel before starting, and never open the fuel cap with the engine running. Make sure the unit is free of debris and the hopper and chipper cone are empty - material in there makes starting harder.
+Set the controls per the STARTING section of the engine manual, let it warm up a few minutes, and make sure the engine is at full throttle before you start chipping.
+<b>Won't start?</b> Usual suspects in order: out of fuel, spark plug wire disconnected, controls not set right, fouled spark plug, stale fuel. <b>Runs but nothing comes out?</b> Clogged discharge chute, or the throttle isn't at FAST.</div>
+      </div>
       <button class="caret-btn" id="rawCaret"><span>Raw</span><span class="ch">›</span></button>
       <div class="caret-body" id="rawBody">
         <div class="total" id="rawTotal" style="padding:4px 0 8px"></div>
@@ -333,6 +371,11 @@ document.getElementById('rawSave').onclick=()=>{
 // more caret
 const mc=document.getElementById('moreCaret'), mb=document.getElementById('moreBody');
 mc.onclick=()=>{ mc.classList.toggle('open'); mb.classList.toggle('open'); };
+const fc=document.getElementById('faqCaret'), fb=document.getElementById('faqBody');
+fc.onclick=()=>{ fc.classList.toggle('open'); fb.classList.toggle('open'); };
+fb.querySelectorAll('.faq-q').forEach(q=>{
+  q.onclick=()=>{ q.classList.toggle('open'); q.nextElementSibling.classList.toggle('open'); };
+});
 document.getElementById('beforeAfter').value=S.beforeAfter;
 document.getElementById('accessories').value=S.accessories;
 document.getElementById('beforeAfter').oninput=e=>{ S.beforeAfter=e.target.value; save(); };
