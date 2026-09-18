@@ -460,6 +460,14 @@ if(S._mig517!==true){
   localStorage.setItem(KEY, JSON.stringify(S));
 }
 
+// Restore the known WC baseline after the September sync loss.
+if(_isStarterState(S)){
+  S.hours=Math.round(S.rawDays.reduce((sum,d)=>sum+(Number(d.hours)||0),0)*100)/100;
+  S.hoursEdited='Sep 8';
+  S._dirty=true;
+  localStorage.setItem(KEY, JSON.stringify(S));
+}
+
 
 function save(){
   localStorage.setItem(KEY, JSON.stringify(S));
